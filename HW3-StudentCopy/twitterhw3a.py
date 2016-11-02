@@ -4,9 +4,7 @@
 
 # You will demo this live for grading.
 import tweepy
-import sys
-import os
-# from textblob import TextBlob
+
 
 access_token = "2371126310-i4XtP14W7iBatOJGOGHfLp1Z5VkPNrA0ZsxPYIT"
 access_token_secret = "zZvu40E7inziNgsHeHNvl8Zw41xT7GCEqlvoIZm3pIKH3"

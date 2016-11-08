@@ -11,28 +11,25 @@
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
 
-import urllib.request, urllib.parse, urllib.error
 import requests
 from bs4 import BeautifulSoup
 import re
 
-base_url = "https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions"
+base_url = "http://collemc.people.si.umich.edu/data/bshw3StarterFile.html"
 r =requests.get(base_url)
 soup = BeautifulSoup(r.text, "html.parser")
 
 for stuff in soup.find_all(text=re.compile("student")):
-	string = str(stuff)
-	string = string.replace("student","AMAZING student")
-	stuff.replaceWith(string)
-# print(str(soup))
+	st = str(stuff)
+	st = st.replace("student","AMAZING student")
+	stuff.replaceWith(st)
 
+for img in soup.find_all("img", src="logo2.png"):
+	img['src'] = 'media/logo.png'
 
-with open("BSIpage.html", "wb") as file:
+for img in soup.find_all("img", src="https://testbed.files.wordpress.com/2012/09/bsi_exposition_041316_192.jpg"):
+	img['src'] = 'media/headshot.jpg'
+
+with open("hw3_BSIpage.html", "wb") as file:
 	file.write(str(soup).encode())
-
-
-
-
-
-
 

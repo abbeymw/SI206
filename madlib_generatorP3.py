@@ -13,7 +13,7 @@ debug = False #True
 # get file from user to make mad lib out of
 if debug:
 	print ("Getting information from file madlib_test.txt...\n")
-fname = "madlibtest2.txt" # need a file with this name in directory
+fname = "madlibtest2.txt" # need a file with this name in directory  #hook up to nltk code and use text.txt(?) instead of madlibtest.txt
 
 f = open(fname, 'r')
 para = f.read()

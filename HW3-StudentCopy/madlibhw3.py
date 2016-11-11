@@ -9,7 +9,6 @@
 # Deliverables:
 # 1) Print the orginal text (150 tokens)
 # 1) Print the new text
-print("START*******")
 
 import nltk 
 import random
@@ -19,30 +18,40 @@ nltk.download('punkt')
 from nltk import word_tokenize,sent_tokenize
 from nltk.book import text2
 
-debug = False #True
-if debug:
-	print ("Getting information from file madlib_test.txt...\n")
+# debug = False #True
+# if debug:
+	# print ("Getting information from file madlib_test.txt...\n")
 
 tokens = text2[0:150]
-print('Tokens:')
-print(tokens)
-tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-print('\n')
-print("Tagged Tokens")
-print(tagged_tokens)
-if debug:
-	print ("First few tagged tokens are:")
-	for tup in tagged_tokens[:5]:
-		print (tup)
+# print('Tokens:')
+# print(tokens)
+# tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
+# print('\n')
+# print("Tagged Tokens")
+# print(tagged_tokens)
+# if debug:
+# 	print ("First few tagged tokens are:")
+# 	for tup in tagged_tokens[:5]:
+# 		print (tup)
+
+def spaced(word):
+	if word in [",", ".", "?", "!", ":", ";"]:
+		return word
+	else:
+		return " " + word
+
+t_list = []
+for t in tokens:				#for each token (t) in tokens
+	t_list.append(spaced(t))	#apply the spaced definition to that token, and append it to t_list
+
+print("START*******")
+print ("".join(t_list))		#print each item in t_list together as a string
+
 
 tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective","ADV":"an adverb"}
 substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1,"ADV":.1}
 
-def spaced(word):
-	if word in [",", ".", "?", "!", ":"]:
-		return word
-	else:
-		return " " + word
+tagged_tokens = nltk.pos_tag(tokens)
 
 final_words = []
 
